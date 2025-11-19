@@ -10,13 +10,13 @@ The Enhanced SentimentR system is now fully configured and ready to use. Here ar
 
 **Easiest way (Recommended):**
 ```bash
-cd /home/yuvraj/shitCapstone/sentimentr
+cd /home/bhaskar/Capstone/sentimentr
 python launch_streamlit.py
 ```
 
 **Manual way:**
 ```bash
-cd /home/yuvraj/shitCapstone/sentimentr
+cd /home/bhaskar/Capstone/sentimentr
 export GEMINI_API_KEY="AIzaSyDpjfEYti2BQipYXzygmr5aML_6V5H_0HI"
 streamlit run enhanced_sentimentr/web/streamlit_app.py
 ```
@@ -24,8 +24,8 @@ streamlit run enhanced_sentimentr/web/streamlit_app.py
 ### 2. 💻 Command Line Interface
 
 ```bash
-cd /home/yuvraj/shitCapstone/sentimentr
-export GEMINI_API_KEY="AIzaSyDpjfEYti2BQipYXzygmr5aML_6V5H_0HI"
+cd /home/bhaskar/Capstone/sentimentr
+export GEMINI_API_KEY="YOUR GEMINI API KEY"
 
 # Basic analysis
 python -m enhanced_sentimentr.cli analyze "I love this product!"
@@ -44,11 +44,11 @@ import os
 import asyncio
 
 # Set API key
-os.environ['GEMINI_API_KEY'] = 'AIzaSyDpjfEYti2BQipYXzygmr5aML_6V5H_0HI'
+os.environ['GEMINI_API_KEY'] = 'YOUR GEMINI KEY'
 
 # Add to path if needed
 import sys
-sys.path.insert(0, '/home/yuvraj/shitCapstone/sentimentr')
+sys.path.insert(0, '/home/bhaskar/Capstone/sentimentr')
 
 from enhanced_sentimentr.core.analyzer import HybridSentimentAnalyzer
 from enhanced_sentimentr.core.models import AnalysisConfig, SentimentMethod
@@ -81,8 +81,8 @@ asyncio.run(analyze_sentiment())
 ### 4. 🌐 REST API Server
 
 ```bash
-cd /home/yuvraj/shitCapstone/sentimentr
-export GEMINI_API_KEY="AIzaSyDpjfEYti2BQipYXzygmr5aML_6V5H_0HI"
+cd /home/bhaskar/Capstone/sentimentr
+export GEMINI_API_KEY="YOUR GEMINI KEY"
 python -m enhanced_sentimentr.api.main
 
 # Then visit: http://localhost:8000/docs for API documentation
@@ -94,7 +94,7 @@ python -m enhanced_sentimentr.api.main
 cd /home/yuvraj/shitCapstone/sentimentr
 
 # Test API key
-export GEMINI_API_KEY="AIzaSyDpjfEYti2BQipYXzygmr5aML_6V5H_0HI"
+export GEMINI_API_KEY="YOUR GEMINI API KEY"
 python test_api_key.py
 
 # Run comprehensive demo
@@ -106,16 +106,16 @@ python test_installation.py
 
 ## 🔑 API Key Management
 
-Your API key is saved in: `/home/yuvraj/shitCapstone/sentimentr/.env`
+Your API key is saved in: `/home/bhaskar/Capstone/sentimentr/.env`
 
 **For each session, set the environment variable:**
 ```bash
-export GEMINI_API_KEY="AIzaSyDpjfEYti2BQipYXzygmr5aML_6V5H_0HI"
+export GEMINI_API_KEY="YOUR GEMINI API KEY"
 ```
 
 **Or add to your shell profile permanently:**
 ```bash
-echo 'export GEMINI_API_KEY="AIzaSyDpjfEYti2BQipYXzygmr5aML_6V5H_0HI"' >> ~/.bashrc
+echo 'export GEMINI_API_KEY="YOUR GEMINI API KEY"' >> ~/.bashrc
 source ~/.bashrc
 ```
 
@@ -123,13 +123,13 @@ source ~/.bashrc
 
 ### Analyze Social Media Text
 ```bash
-export GEMINI_API_KEY="AIzaSyDpjfEYti2BQipYXzygmr5aML_6V5H_0HI"
+export GEMINI_API_KEY="YOUR GEMINI API KEY"
 python -m enhanced_sentimentr.cli analyze "OMG this new phone is absolutely incredible! 😍📱✨" --method hybrid --emotions
 ```
 
 ### Compare Analysis Methods
 ```bash
-export GEMINI_API_KEY="AIzaSyDpjfEYti2BQipYXzygmr5aML_6V5H_0HI"
+export GEMINI_API_KEY="YOUR GEMINI API KEY"
 
 # Rule-based only
 python -m enhanced_sentimentr.cli analyze "This product is amazing!" --method rule_based
@@ -143,7 +143,7 @@ python -m enhanced_sentimentr.cli analyze "This product is amazing!" --method hy
 
 ### Business Review Analysis
 ```bash
-export GEMINI_API_KEY="AIzaSyDpjfEYti2BQipYXzygmr5aML_6V5H_0HI"
+export GEMINI_API_KEY="YOUR GEMINI API KEY"
 python -m enhanced_sentimentr.cli analyze "The food quality is excellent and presentation is beautiful, but the service was quite slow and the prices are too high for what you get." --method hybrid --emotions --aspects
 ```
 
@@ -164,7 +164,7 @@ When everything is working correctly, you'll see output like:
 ### Import Errors
 ```bash
 # Make sure you're in the right directory
-cd /home/yuvraj/shitCapstone/sentimentr
+cd /home/bhaskar/Capstone/sentimentr
 pwd  # Should show: /home/yuvraj/shitCapstone/sentimentr
 
 # Use the launcher scripts
@@ -178,7 +178,7 @@ python test_installation.py  # To verify setup
 echo $GEMINI_API_KEY
 
 # Set it manually
-export GEMINI_API_KEY="AIzaSyDpjfEYti2BQipYXzygmr5aML_6V5H_0HI"
+export GEMINI_API_KEY="YOUR GEMINI API KEY"
 
 # Test it works
 python test_api_key.py
