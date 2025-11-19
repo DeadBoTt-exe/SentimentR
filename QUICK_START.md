@@ -91,7 +91,7 @@ python -m enhanced_sentimentr.api.main
 ## 🧪 Test Everything Works
 
 ```bash
-cd /home/yuvraj/shitCapstone/sentimentr
+cd /home/bhaskar/Capstone/sentimentr
 
 # Test API key
 export GEMINI_API_KEY="YOUR GEMINI API KEY"
