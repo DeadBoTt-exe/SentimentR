@@ -17,7 +17,7 @@ python launch_streamlit.py
 **Manual way:**
 ```bash
 cd /home/bhaskar/Capstone/sentimentr
-export GEMINI_API_KEY="AIzaSyDpjfEYti2BQipYXzygmr5aML_6V5H_0HI"
+export GEMINI_API_KEY="YOUR GEMINI API KEY"
 streamlit run enhanced_sentimentr/web/streamlit_app.py
 ```
 
