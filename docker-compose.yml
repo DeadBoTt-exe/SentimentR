@@ -1,0 +1,71 @@
+version: '3.8'
+
+services:
+  # Enhanced SentimentR API
+  sentimentr-api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+    volumes:
+      - ./logs:/app/logs
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - sentimentr-network
+
+  # Redis for caching (optional)
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    restart: unless-stopped
+    networks:
+      - sentimentr-network
+
+  # Streamlit Web Interface
+  sentimentr-web:
+    build: .
+    command: ["streamlit", "run", "enhanced_sentimentr/web/streamlit_app.py", "--server.port=8501", "--server.address=0.0.0.0"]
+    ports:
+      - "8501:8501"
+    environment:
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+    volumes:
+      - ./logs:/app/logs
+    restart: unless-stopped
+    depends_on:
+      - sentimentr-api
+    networks:
+      - sentimentr-network
+
+  # Nginx reverse proxy (optional)
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - sentimentr-api
+      - sentimentr-web
+    restart: unless-stopped
+    networks:
+      - sentimentr-network
+
+volumes:
+  redis-data:
+  logs:
+
+networks:
+  sentimentr-network:
+    driver: bridge
